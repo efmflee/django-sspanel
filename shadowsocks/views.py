@@ -84,15 +84,15 @@ def register(request):
             # 判断邀请码是否存在并返回信息
             if len(code_query) == 0:
                 registerinfo = {
-                    'title': '邀请码失效',
-                    'subtitle': '请重新获取邀请码',
-                    'status': 'error',
+                    'title': '未使用邀请码,注册成功!',
+                    # 'subtitle': '请重新获取邀请码',
+                    'status': 'success',
                 }
                 context = {
                     'registerinfo': registerinfo,
-                    'form': form,
+                    # 'form': form,
                 }
-                return render(request, 'sspanel/register.html', context=context)
+                # return render(request, 'sspanel/register.html', context=context)
 
             else:
                 registerinfo = {
@@ -103,15 +103,16 @@ def register(request):
                 context = {
                     'registerinfo': registerinfo
                 }
-                form.save()
+
                 # 删除使用过的邀请码
                 code_query.delete()
-                # 将user和ssuser关联
-                user = User.objects.get(username=request.POST.get('username'))
-                max_port_user = SSUser.objects.order_by('-port').first()
-                port = max_port_user.port + randint(2, 3)
-                ss_user = SSUser.objects.create(user=user, port=port)
-                return render(request, 'sspanel/index.html', context=context)
+            form.save()
+            # 将user和ssuser关联
+            user = User.objects.get(username=request.POST.get('username'))
+            max_port_user = SSUser.objects.order_by('-port').first()
+            port = max_port_user.port + randint(2, 3)
+            ss_user = SSUser.objects.create(user=user, port=port)
+            return render(request, 'sspanel/index.html', context=context)
 
     else:
         form = RegisterForm()

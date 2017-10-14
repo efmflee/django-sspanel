@@ -12,11 +12,14 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import platform
+
+from .simple_setting_local import *
+# from .simple_setting_product import *
 # 导入自定义设定文件
-if platform.node() == 'EhcodeMBP.lan':
-    from .simple_setting_local import *
-else:
-    from.simple_setting_product import *
+# if platform.node() == 'EhcodeMBP.lan':
+#     from .simple_setting_local import *
+# else:
+#     from.simple_setting_product import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -36,6 +39,8 @@ SECRET_KEY = '#d$3kz$u_qb26y+idj#kf7$)wcl)j%6vfjvd@poqy(vvxj#8o9'
 # Application definition
 
 INSTALLED_APPS = [
+    'material',
+    'material.admin',  # material.admin’ must be added before ‘django.contrib.admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
