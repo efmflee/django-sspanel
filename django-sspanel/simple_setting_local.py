@@ -43,4 +43,4 @@ TITLE = '谜之屋'
 SUBTITLE = '秘密的小屋111'
 
 # 网站邀请界面提示语
-INVITEINFO = '邀请码实时更新，如果用完了请关注公众号findyourownway获取'
+INVITEINFO = '邀请码实时更新。'

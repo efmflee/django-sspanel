@@ -55,4 +55,4 @@ TITLE = '谜之屋'
 SUBTITLE = '秘密的小屋'
 
 # 网站邀请界面提示语
-INVITEINFO = '邀请码实时更新，如果用完了进telegram群 群链接：https://t.me/Ehcobreakwa11'
+INVITEINFO = '邀请码实时更新。'
